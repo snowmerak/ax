@@ -20,6 +20,18 @@ func main() {
 				UsageText: "ax init <remote-repository>",
 				Action:    initRepo,
 			}, {
+				Name:      "push",
+				Aliases:   []string{"u"},
+				Usage:     "Push and switch back to the previous branch",
+				UsageText: "ax push",
+				Action:    push,
+			}, {
+				Name:      "commit",
+				Aliases:   []string{"c"},
+				Usage:     "Commit changes",
+				UsageText: "ax commit <message>",
+				Action:    commit,
+			}, {
 				Name:      "feature",
 				Aliases:   []string{"f"},
 				Usage:     "Create a new feature branch",
@@ -43,12 +55,6 @@ func main() {
 				Usage:     "Create a new proposal branch",
 				UsageText: "ax proposal <proposal-name>",
 				Action:    switchProposal,
-			}, {
-				Name:      "up",
-				Aliases:   []string{"u"},
-				Usage:     "Switch back to the previous branch",
-				UsageText: "ax back",
-				Action:    up,
 			},
 		},
 	}
