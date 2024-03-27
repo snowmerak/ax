@@ -55,6 +55,18 @@ func main() {
 				Usage:     "Create a new proposal branch",
 				UsageText: "ax proposal <proposal-name>",
 				Action:    switchProposal,
+			}, {
+				Name:      "develop",
+				Aliases:   []string{"d"},
+				Usage:     "Switch to the develop branch",
+				UsageText: "ax develop",
+				Action:    switchDevelop,
+			}, {
+				Name:      "staging",
+				Aliases:   []string{"s"},
+				Usage:     "Switch to the staging branch",
+				UsageText: "ax staging",
+				Action:    switchStaging,
 			},
 		},
 	}

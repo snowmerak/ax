@@ -119,3 +119,37 @@ func switchHotfix(ctx *cli.Context) error {
 
 	return nil
 }
+
+func switchStaging(ctx *cli.Context) error {
+	name, err := getBranchName()
+	if err != nil {
+		return fmt.Errorf("failed to get current branch: %w", err)
+	}
+
+	if name != "prod" {
+		return fmt.Errorf("you must be on the prod branch")
+	}
+
+	if err := run("git", "switch", "staging"); err != nil {
+		return fmt.Errorf("failed to switch to staging branch: %w", err)
+	}
+
+	return nil
+}
+
+func switchDevelop(ctx *cli.Context) error {
+	name, err := getBranchName()
+	if err != nil {
+		return fmt.Errorf("failed to get current branch: %w", err)
+	}
+
+	if name != "staging" {
+		return fmt.Errorf("you must be on the staging branch")
+	}
+
+	if err := run("git", "switch", "develop"); err != nil {
+		return fmt.Errorf("failed to switch to develop branch: %w", err)
+	}
+
+	return nil
+}
