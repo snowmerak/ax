@@ -31,10 +31,12 @@ go install github.com/snowmerak/ax@latest
 
 ## Usage
 
-### Initialize a new git repository
+### git
+
+#### Initialize a new git repository
 
 ```bash
-ax init <remote-git-url>
+ax g init <remote-git-url>
 ```
 
 Initialize a new git repository and create some branches
@@ -43,40 +45,40 @@ Initialize a new git repository and create some branches
 2. staging: The staging branch, stable version for testing
 3. develop: The development branch, the main branch for development
 
-### Switch to the staging branch
+#### Switch to the staging branch
 
 ```bash
-ax staging
+ax g staging
 ```
 
 The staging branch is the stable version for testing.  
 You can switch to the staging branch only if you are in the develop branch.  
 If you want to release a new version, you should switch to the staging branch first.
 
-### Switch to the develop branch
+#### Switch to the develop branch
 
 ```bash
-ax develop
+ax g develop
 ```
 
 The develop branch is the main branch for development.  
 You can switch to the develop branch only if you are in the staging branch.
 If you want to create a new feature, bugfix branch, you should switch to the develop branch first.  
 
-### Switch feature branch
+#### Switch feature branch
 
 ```bash
-ax feature <branch-name>
+ax g feature <branch-name>
 ```
 
 The feature branch is used to develop a new feature.  
 You can switch to the feature branch only if you are in the develop branch.  
 If you want to create a new feature branch, you should switch to the develop branch first.
 
-### Switch bugfix branch
+#### Switch bugfix branch
 
 ```bash
-ax bugfix <branch-name>
+ax g bugfix <branch-name>
 ```
 
 The bugfix branch is used to fix a bug.  
@@ -84,37 +86,37 @@ You can switch to the bugfix branch only if you are in the develop branch.
 If you want to create a new bugfix branch, you should switch to the develop branch first.  
 **CAUTION: The bugfix branch should be merged into the develop branch before the next release.**
 
-### Switch hotfix branch
+#### Switch hotfix branch
 
 ```bash
-ax hotfix <branch-name>
+ax g hotfix <branch-name>
 ```
 
 The hotfix branch is used to fix a bug on the production server.  
 **CAUTION: The hotfix branch must be deleted. Do not merge the hotfix branch into the develop branch.**
 
-### Switch proposal branch
+#### Switch proposal branch
 
 ```bash
-ax proposal <branch-name>
+ax g proposal <branch-name>
 ```
 
 The proposal branch is used to propose a new function or a new idea.  
 You can switch to the proposal branch only if you are in the develop branch.  
 If you want to create a new proposal branch, you should switch to the develop branch first.
 
-### Commit changes
+#### Commit changes
 
 ```bash
-ax commit <message>
+ax g commit <message>
 ```
 
 Commit changes with a message.
 
-### Push and switch back to the previous branch
+#### Push and switch back to the previous branch
 
 ```bash
-ax push
+ax g push
 ```
 
 Push changes and switch back to the previous branch.  
