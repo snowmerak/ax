@@ -73,6 +73,74 @@ func main() {
 					},
 				},
 			},
+			{
+				Name:    "container",
+				Aliases: []string{"c"},
+				Subcommands: []*cli.Command{
+					{
+						Name:    "config",
+						Aliases: []string{"c"},
+						Usage:   "Configure container",
+						Subcommands: []*cli.Command{
+							{
+								Name:      "init",
+								Aliases:   []string{"i"},
+								Usage:     "Initialize container config",
+								UsageText: "ax container config init",
+								Action:    initContainerConfig,
+							},
+						},
+					},
+					{
+						Name:    "image",
+						Aliases: []string{"i"},
+						Subcommands: []*cli.Command{
+							{
+								Name:    "init",
+								Aliases: []string{"i"},
+								Usage:   "Initialize docker image",
+								Action:  initDockerImage,
+								Flags: []cli.Flag{
+									&cli.BoolFlag{
+										Name:     "go",
+										Aliases:  []string{"g"},
+										Usage:    "Initialize a Go project image",
+										Value:    false,
+										Category: "language",
+									},
+									&cli.BoolFlag{
+										Name:     "node",
+										Aliases:  []string{"n"},
+										Usage:    "Initialize a Node.js project image",
+										Value:    false,
+										Category: "language",
+									},
+									&cli.BoolFlag{
+										Name:     "python",
+										Aliases:  []string{"p"},
+										Usage:    "Initialize a Python project image",
+										Value:    false,
+										Category: "language",
+									},
+								},
+							},
+							{
+								Name:    "build",
+								Aliases: []string{"b"},
+								Usage:   "Build docker image",
+								Action:  buildDockerImage,
+								Flags: []cli.Flag{
+									&cli.BoolFlag{
+										Name:    "push",
+										Aliases: []string{"p"},
+										Usage:   "Push the image to the registry",
+									},
+								},
+							},
+						},
+					},
+				},
+			},
 		},
 	}
 
