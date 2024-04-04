@@ -111,6 +111,6 @@ func writeJdkDevContainer(buffer *bytes.Buffer) {
 func writeCppDevContainer(buffer *bytes.Buffer) {
 	buffer.WriteString(UbuntuBaseImage)
 	buffer.WriteString("\n\n")
-	buffer.WriteString("RUN apt update && apt install -y build-essential autoconf autoconf-archive binutils cmake ninja-build curl file gcc g++ git libtool make musl-dev tar unzip zip wget pkg-config\n\n")
+	buffer.WriteString("RUN apt update && apt install -y build-essential autoconf autoconf-archive binutils ninja-build curl file gcc g++ git libtool make musl-dev tar unzip zip wget pkg-config\n\n")
 	buffer.WriteString("CMD [\"/bin/sh\", \"-c\", \"while true; do sleep 30; done;\"]\n")
 }
