@@ -96,10 +96,11 @@ func main() {
 						Aliases: []string{"i"},
 						Subcommands: []*cli.Command{
 							{
-								Name:    "init",
-								Aliases: []string{"i"},
-								Usage:   "Initialize docker image",
-								Action:  initDockerImage,
+								Name:      "init",
+								Aliases:   []string{"i"},
+								Usage:     "Initialize docker image",
+								UsageText: "ax container image init <language-option> <name>",
+								Action:    initDockerImage,
 								Flags: []cli.Flag{
 									&cli.BoolFlag{
 										Name:     "go",
@@ -125,10 +126,11 @@ func main() {
 								},
 							},
 							{
-								Name:    "build",
-								Aliases: []string{"b"},
-								Usage:   "Build docker image",
-								Action:  buildDockerImage,
+								Name:      "build",
+								Aliases:   []string{"b"},
+								Usage:     "Build docker image",
+								UsageText: "ax container image build <name>",
+								Action:    buildDockerImage,
 								Flags: []cli.Flag{
 									&cli.BoolFlag{
 										Name:    "push",
@@ -147,7 +149,7 @@ func main() {
 								Name:      "init",
 								Aliases:   []string{"i"},
 								Usage:     "Initialize devcontainer",
-								UsageText: "ax container devcontainer init <name>",
+								UsageText: "ax container devcontainer init <language-option> <name>",
 								Action:    initDevContainer,
 								Flags: []cli.Flag{
 									&cli.BoolFlag{
