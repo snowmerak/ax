@@ -96,3 +96,18 @@ func generatePythonImageFile() (string, error) {
 
 	return builder.String(), nil
 }
+
+func generateJdkImageFile() (string, error) {
+	builder := strings.Builder{}
+
+	builder.WriteString("FROM ")
+	builder.WriteString("mcr.microsoft.com/openjdk/jdk:21-ubuntu\n")
+	builder.WriteString("\n")
+	builder.WriteString("WORKDIR /app\n")
+	builder.WriteString("\n")
+	builder.WriteString("COPY . .\n")
+	builder.WriteString("\n")
+	builder.WriteString("CMD [\"java\", \"-jar\", \"app.jar\"]\n")
+
+	return builder.String(), nil
+}

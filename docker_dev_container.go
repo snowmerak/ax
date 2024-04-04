@@ -25,6 +25,8 @@ func initDevContainer(ctx *cli.Context) error {
 		writeNodeDevContainer(dockerFileBuilder)
 	case ctx.Bool("python"):
 		writePythonDevContainer(dockerFileBuilder)
+	case ctx.Bool("jdk"):
+		writeJdkDevContainer(dockerFileBuilder)
 	default:
 		return fmt.Errorf("no language specified")
 	}
@@ -84,5 +86,10 @@ func writeNodeDevContainer(buffer *bytes.Buffer) {
 
 func writePythonDevContainer(buffer *bytes.Buffer) {
 	buffer.WriteString("python:3.12-bookworm\n\n")
+	buffer.WriteString("CMD [\"/bin/sh\", \"-c\", \"while true; do sleep 30; done;\"]\n")
+}
+
+func writeJdkDevContainer(buffer *bytes.Buffer) {
+	buffer.WriteString("mcr.microsoft.com/openjdk/jdk:21-ubuntu\n\n")
 	buffer.WriteString("CMD [\"/bin/sh\", \"-c\", \"while true; do sleep 30; done;\"]\n")
 }

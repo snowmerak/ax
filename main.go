@@ -123,6 +123,13 @@ func main() {
 										Value:    false,
 										Category: "language",
 									},
+									&cli.BoolFlag{
+										Name:     "jdk",
+										Aliases:  []string{"j"},
+										Usage:    "Initialize a JDK project image",
+										Value:    false,
+										Category: "language",
+									},
 								},
 							},
 							{
@@ -170,6 +177,13 @@ func main() {
 										Name:     "python",
 										Aliases:  []string{"p"},
 										Usage:    "Initialize a Python project image",
+										Value:    false,
+										Category: "language",
+									},
+									&cli.BoolFlag{
+										Name:     "jdk",
+										Aliases:  []string{"j"},
+										Usage:    "Initialize a JDK project image",
 										Value:    false,
 										Category: "language",
 									},
