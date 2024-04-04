@@ -91,5 +91,6 @@ func writePythonDevContainer(buffer *bytes.Buffer) {
 
 func writeJdkDevContainer(buffer *bytes.Buffer) {
 	buffer.WriteString("mcr.microsoft.com/openjdk/jdk:21-ubuntu\n\n")
+	buffer.WriteString("RUN apt update && apt install -y gradle\n\n")
 	buffer.WriteString("CMD [\"/bin/sh\", \"-c\", \"while true; do sleep 30; done;\"]\n")
 }
