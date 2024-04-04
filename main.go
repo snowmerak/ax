@@ -139,6 +139,42 @@ func main() {
 							},
 						},
 					},
+					{
+						Name:    "devcontainer",
+						Aliases: []string{"d"},
+						Subcommands: []*cli.Command{
+							{
+								Name:      "init",
+								Aliases:   []string{"i"},
+								Usage:     "Initialize devcontainer",
+								UsageText: "ax container devcontainer init <name>",
+								Action:    initDevContainer,
+								Flags: []cli.Flag{
+									&cli.BoolFlag{
+										Name:     "go",
+										Aliases:  []string{"g"},
+										Usage:    "Initialize a Go project image",
+										Value:    false,
+										Category: "language",
+									},
+									&cli.BoolFlag{
+										Name:     "node",
+										Aliases:  []string{"n"},
+										Usage:    "Initialize a Node.js project image",
+										Value:    false,
+										Category: "language",
+									},
+									&cli.BoolFlag{
+										Name:     "python",
+										Aliases:  []string{"p"},
+										Usage:    "Initialize a Python project image",
+										Value:    false,
+										Category: "language",
+									},
+								},
+							},
+						},
+					},
 				},
 			},
 		},
