@@ -29,6 +29,8 @@ func initDevContainer(ctx *cli.Context) error {
 		writeJdkDevContainer(dockerFileBuilder)
 	case ctx.Bool("cpp"):
 		writeCppDevContainer(dockerFileBuilder)
+	case ctx.Bool("rust"):
+		writeRustDevContainer(dockerFileBuilder)
 	default:
 		return fmt.Errorf("no language specified")
 	}
