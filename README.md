@@ -289,3 +289,9 @@ ax c r <alias> <args> ...
 ```
 
 Run container image with alias and arguments.
+
+- example
+- 
+```shell
+ax c r buf mod init
+```
