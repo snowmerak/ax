@@ -79,32 +79,27 @@ func initDevContainer(ctx *cli.Context) error {
 const UbuntuBaseImage = "ubuntu:24.04"
 const DebianAlias = "bookworm"
 const JdkVersion = "21"
+const PythonVersion = "3.12"
+const NodeVersion = "20"
+const GolangVersion = "1.22"
 
 func writeGoDevContainer(buffer *bytes.Buffer) {
-	buffer.WriteString("golang:1.22-")
-	buffer.WriteString(DebianAlias)
-	buffer.WriteString("\n\n")
+	buffer.WriteString(fmt.Sprintf("golang:%s-%s\n\n", GolangVersion, DebianAlias))
 	buffer.WriteString("CMD [\"/bin/sh\", \"-c\", \"while true; do sleep 30; done;\"]\n")
 }
 
 func writeNodeDevContainer(buffer *bytes.Buffer) {
-	buffer.WriteString("node:20-")
-	buffer.WriteString(DebianAlias)
-	buffer.WriteString("\n\n")
+	buffer.WriteString(fmt.Sprintf("node:%s-%s\n\n", NodeVersion, DebianAlias))
 	buffer.WriteString("CMD [\"/bin/sh\", \"-c\", \"while true; do sleep 30; done;\"]\n")
 }
 
 func writePythonDevContainer(buffer *bytes.Buffer) {
-	buffer.WriteString("python:3.12-")
-	buffer.WriteString(DebianAlias)
-	buffer.WriteString("\n\n")
+	buffer.WriteString(fmt.Sprintf("python:%s-%s\n\n", PythonVersion, DebianAlias))
 	buffer.WriteString("CMD [\"/bin/sh\", \"-c\", \"while true; do sleep 30; done;\"]\n")
 }
 
 func writeJdkDevContainer(buffer *bytes.Buffer) {
-	buffer.WriteString("mcr.microsoft.com/openjdk/jdk:")
-	buffer.WriteString(JdkVersion)
-	buffer.WriteString("-ubuntu\n\n")
+	buffer.WriteString(fmt.Sprintf("mcr.microsoft.com/openjdk/jdk:%s-ubuntu\n\n", JdkVersion))
 	buffer.WriteString("CMD [\"/bin/sh\", \"-c\", \"while true; do sleep 30; done;\"]\n")
 }
 
