@@ -19,6 +19,8 @@ func initDockerImage(ctx *cli.Context) error {
 		data, _ = generateNodeImageFile()
 	case ctx.Bool("python"):
 		data, _ = generatePythonImageFile()
+	case ctx.Bool("jdk"):
+		data, _ = generateJdkImageFile()
 	default:
 		return fmt.Errorf("no language specified. Please specify a language: go, node, or python")
 	}
