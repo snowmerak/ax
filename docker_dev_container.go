@@ -76,28 +76,41 @@ func initDevContainer(ctx *cli.Context) error {
 	return nil
 }
 
+const UbuntuBaseImage = "ubuntu:24.04"
+const DebianAlias = "bookworm"
+const JdkVersion = "21"
+
 func writeGoDevContainer(buffer *bytes.Buffer) {
-	buffer.WriteString("golang:1.22-bookworm\n\n")
+	buffer.WriteString("golang:1.22-")
+	buffer.WriteString(DebianAlias)
+	buffer.WriteString("\n\n")
 	buffer.WriteString("CMD [\"/bin/sh\", \"-c\", \"while true; do sleep 30; done;\"]\n")
 }
 
 func writeNodeDevContainer(buffer *bytes.Buffer) {
-	buffer.WriteString("node:20-bookworm\n\n")
+	buffer.WriteString("node:20-")
+	buffer.WriteString(DebianAlias)
+	buffer.WriteString("\n\n")
 	buffer.WriteString("CMD [\"/bin/sh\", \"-c\", \"while true; do sleep 30; done;\"]\n")
 }
 
 func writePythonDevContainer(buffer *bytes.Buffer) {
-	buffer.WriteString("python:3.12-bookworm\n\n")
+	buffer.WriteString("python:3.12-")
+	buffer.WriteString(DebianAlias)
+	buffer.WriteString("\n\n")
 	buffer.WriteString("CMD [\"/bin/sh\", \"-c\", \"while true; do sleep 30; done;\"]\n")
 }
 
 func writeJdkDevContainer(buffer *bytes.Buffer) {
-	buffer.WriteString("mcr.microsoft.com/openjdk/jdk:21-ubuntu\n\n")
+	buffer.WriteString("mcr.microsoft.com/openjdk/jdk:")
+	buffer.WriteString(JdkVersion)
+	buffer.WriteString("-ubuntu\n\n")
 	buffer.WriteString("CMD [\"/bin/sh\", \"-c\", \"while true; do sleep 30; done;\"]\n")
 }
 
 func writeCppDevContainer(buffer *bytes.Buffer) {
-	buffer.WriteString("ubuntu:22.04\n\n")
-	buffer.WriteString("RUN apt update && apt install -y build-essential autoconf autoconf-archive binutils cmake ninja curl file gcc g++ git libtool make musl-dev tar unzip zip wget pkg-config\n\n")
+	buffer.WriteString(UbuntuBaseImage)
+	buffer.WriteString("\n\n")
+	buffer.WriteString("RUN apt update && apt install -y build-essential autoconf autoconf-archive binutils cmake ninja-build curl file gcc g++ git libtool make musl-dev tar unzip zip wget pkg-config\n\n")
 	buffer.WriteString("CMD [\"/bin/sh\", \"-c\", \"while true; do sleep 30; done;\"]\n")
 }
