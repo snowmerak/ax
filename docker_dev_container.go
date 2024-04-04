@@ -40,7 +40,14 @@ func initDevContainer(ctx *cli.Context) error {
 	devcontainerFileContent.WriteString("  \"name\": \"")
 	devcontainerFileContent.WriteString(name)
 	devcontainerFileContent.WriteString("\",\n")
-	devcontainerFileContent.WriteString("  \"dockerFile\": \"Dockerfile\"\n")
+	devcontainerFileContent.WriteString("  \"dockerComposeFile\": [\n")
+	devcontainerFileContent.WriteString("    \"docker-compose.yml\"\n")
+	devcontainerFileContent.WriteString("  ],\n")
+	devcontainerFileContent.WriteString("  \"service\": \"")
+	devcontainerFileContent.WriteString(name)
+	devcontainerFileContent.WriteString("\",\n")
+	devcontainerFileContent.WriteString("  \"workspaceFolder\": \"/workspace\",\n")
+	devcontainerFileContent.WriteString("  \"shutdownAction\": \"stopCompose\"\n")
 	devcontainerFileContent.WriteString("}\n")
 	if err := os.WriteFile(devcontainerFilePath, devcontainerFileContent.Bytes(), 0644); err != nil {
 		return fmt.Errorf("error writing devcontainer.json: %w", err)
@@ -57,7 +64,7 @@ func initDevContainer(ctx *cli.Context) error {
 	devComposeFileContent.WriteString("      context: .\n")
 	devComposeFileContent.WriteString("      dockerfile: Dockerfile\n")
 	devComposeFileContent.WriteString("    volumes:\n")
-	devComposeFileContent.WriteString("      - .:/workspace:cached\n")
+	devComposeFileContent.WriteString("      - ../../.:/workspace:cached\n")
 	if err := os.WriteFile(devComposeFilePath, devComposeFileContent.Bytes(), 0644); err != nil {
 		return fmt.Errorf("error writing docker-compose.yml: %w", err)
 	}
@@ -66,16 +73,16 @@ func initDevContainer(ctx *cli.Context) error {
 }
 
 func writeGoDevContainer(buffer *bytes.Buffer) {
-	buffer.WriteString("golang:1.22-bookworm\n")
+	buffer.WriteString("golang:1.22-bookworm\n\n")
 	buffer.WriteString("CMD [\"/bin/sh\", \"-c\", \"while true; do sleep 30; done;\"]\n")
 }
 
 func writeNodeDevContainer(buffer *bytes.Buffer) {
-	buffer.WriteString("node:20-bookworm\n")
+	buffer.WriteString("node:20-bookworm\n\n")
 	buffer.WriteString("CMD [\"/bin/sh\", \"-c\", \"while true; do sleep 30; done;\"]\n")
 }
 
 func writePythonDevContainer(buffer *bytes.Buffer) {
-	buffer.WriteString("python:3.12-bookworm\n")
+	buffer.WriteString("python:3.12-bookworm\n\n")
 	buffer.WriteString("CMD [\"/bin/sh\", \"-c\", \"while true; do sleep 30; done;\"]\n")
 }
