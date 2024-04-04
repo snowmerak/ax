@@ -165,6 +165,7 @@ COMMANDS:
    config, c        Configure container
    image, i         
    devcontainer, d  
+   run, r           Run container
    help, h          Shows a list of commands or help for one command
 
 OPTIONS:
@@ -280,3 +281,32 @@ You can select a base language for the project.
 4. Jdk: -j or --jdk
 5. C++: -c or --cpp
 6. Rust: -r or --rust
+
+#### Run container
+
+```
+ax c r
+```
+
+```shell
+NAME:
+   AX container run - Run container
+
+USAGE:
+   AX container run command [command options] 
+
+COMMANDS:
+   buf, b   Run buf container
+   help, h  Shows a list of commands or help for one command
+
+OPTIONS:
+   --help, -h  show help
+```
+
+##### Run buf container
+
+```shell
+ax c r b <args> ...
+```
+
+Run buf build cli container with arguments.
