@@ -279,3 +279,4 @@ You can select a base language for the project.
 3. Python: -p or --python
 4. Jdk: -j or --jdk
 5. C++: -c or --cpp
+6. Rust: -r or --rust

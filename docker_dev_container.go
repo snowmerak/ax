@@ -82,6 +82,7 @@ const JdkVersion = "21"
 const PythonVersion = "3.12"
 const NodeVersion = "20"
 const GolangVersion = "1.22"
+const RustVersion = "1.77"
 
 func writeGoDevContainer(buffer *bytes.Buffer) {
 	buffer.WriteString(fmt.Sprintf("golang:%s-%s\n\n", GolangVersion, DebianAlias))
@@ -107,5 +108,10 @@ func writeCppDevContainer(buffer *bytes.Buffer) {
 	buffer.WriteString(UbuntuBaseImage)
 	buffer.WriteString("\n\n")
 	buffer.WriteString("RUN apt update && apt install -y build-essential autoconf autoconf-archive binutils ninja-build curl file gcc g++ git libtool make musl-dev tar unzip zip wget pkg-config\n\n")
+	buffer.WriteString("CMD [\"/bin/sh\", \"-c\", \"while true; do sleep 30; done;\"]\n")
+}
+
+func writeRustDevContainer(buffer *bytes.Buffer) {
+	buffer.WriteString(fmt.Sprintf("rust:%s-%s\n\n", RustVersion, DebianAlias))
 	buffer.WriteString("CMD [\"/bin/sh\", \"-c\", \"while true; do sleep 30; done;\"]\n")
 }

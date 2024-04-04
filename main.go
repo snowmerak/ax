@@ -194,6 +194,13 @@ func main() {
 										Value:    false,
 										Category: "language",
 									},
+									&cli.BoolFlag{
+										Name:     "rust",
+										Aliases:  []string{"r"},
+										Usage:    "Initialize a Rust project image",
+										Value:    false,
+										Category: "language",
+									},
 								},
 							},
 						},
