@@ -234,6 +234,7 @@ You can select a base language for the project.
 1. Go: -g or --go
 2. Node: -n or --node
 3. Python: -p or --python
+4. Jdk: -j or --jdk
 
 ##### Build docker image
 
@@ -276,3 +277,5 @@ You can select a base language for the project.
 1. Go: -g or --go
 2. Node: -n or --node
 3. Python: -p or --python
+4. Jdk: -j or --jdk
+5. C++: -c or --cpp
