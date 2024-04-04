@@ -187,6 +187,13 @@ func main() {
 										Value:    false,
 										Category: "language",
 									},
+									&cli.BoolFlag{
+										Name:     "cpp",
+										Aliases:  []string{"c"},
+										Usage:    "Initialize a C++ project image",
+										Value:    false,
+										Category: "language",
+									},
 								},
 							},
 						},

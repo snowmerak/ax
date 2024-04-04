@@ -27,6 +27,8 @@ func initDevContainer(ctx *cli.Context) error {
 		writePythonDevContainer(dockerFileBuilder)
 	case ctx.Bool("jdk"):
 		writeJdkDevContainer(dockerFileBuilder)
+	case ctx.Bool("cpp"):
+		writeCppDevContainer(dockerFileBuilder)
 	default:
 		return fmt.Errorf("no language specified")
 	}
@@ -91,6 +93,11 @@ func writePythonDevContainer(buffer *bytes.Buffer) {
 
 func writeJdkDevContainer(buffer *bytes.Buffer) {
 	buffer.WriteString("mcr.microsoft.com/openjdk/jdk:21-ubuntu\n\n")
-	buffer.WriteString("RUN apt update && apt install -y snapd && snap install gradle --classic\n\n")
+	buffer.WriteString("CMD [\"/bin/sh\", \"-c\", \"while true; do sleep 30; done;\"]\n")
+}
+
+func writeCppDevContainer(buffer *bytes.Buffer) {
+	buffer.WriteString("ubuntu:22.04\n\n")
+	buffer.WriteString("RUN apt update && apt install -y build-essential autoconf autoconf-archive binutils cmake ninja curl file gcc g++ git libtool make musl-dev tar unzip zip wget pkg-config\n\n")
 	buffer.WriteString("CMD [\"/bin/sh\", \"-c\", \"while true; do sleep 30; done;\"]\n")
 }
