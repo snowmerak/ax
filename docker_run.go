@@ -1,16 +1,23 @@
 package main
 
-import "github.com/urfave/cli/v2"
+import (
+	"errors"
+	"github.com/urfave/cli/v2"
+)
 
-func dockerRunBuf(ctx *cli.Context) error {
+func dockerRun(ctx *cli.Context) error {
 	args := ctx.Args().Slice()
+
+	if len(args) == 0 {
+		return errors.New("no container image specified")
+	}
 
 	cfg, err := loadContainerConfig()
 	if err != nil {
 		return err
 	}
 
-	if err := run(cfg.Engine, append([]string{"run", "-v", ".:/workspace", "-w", "/workspace", "bufbuild/buf"}, args...)...); err != nil {
+	if err := run(cfg.Engine, append([]string{"run", "-v", ".:/workspace", "-w", "/workspace", cfg.Aliases[args[0]]}, args[1:]...)...); err != nil {
 		return err
 	}
 

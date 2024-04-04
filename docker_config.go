@@ -22,6 +22,7 @@ type ContainerRegistry struct {
 
 type ContainerConfig struct {
 	Engine     string               `survey:"engine" yaml:"engine"`
+	Aliases    map[string]string    `yaml:"aliases"`
 	Registries []*ContainerRegistry `survey:"registries" yaml:"registries"`
 }
 
@@ -58,6 +59,10 @@ func initContainerConfig(ctx *cli.Context) error {
 
 			cc.Registries = registries
 		}
+	}
+
+	cc.Aliases = map[string]string{
+		"buf": "bufbuild/buf",
 	}
 
 	if err := saveContainerConfig(&cc); err != nil {

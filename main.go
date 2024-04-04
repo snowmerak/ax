@@ -206,18 +206,11 @@ func main() {
 						},
 					},
 					{
-						Name:    "run",
-						Aliases: []string{"r"},
-						Usage:   "Run container",
-						Subcommands: []*cli.Command{
-							{
-								Name:      "buf",
-								Aliases:   []string{"b"},
-								Usage:     "Run buf container",
-								UsageText: "ax container run buf <args>",
-								Action:    dockerRunBuf,
-							},
-						},
+						Name:      "run",
+						Aliases:   []string{"r"},
+						Usage:     "Run container",
+						UsageText: "ax container run <alias> <args>",
+						Action:    dockerRun,
 					},
 				},
 			},

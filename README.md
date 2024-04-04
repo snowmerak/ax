@@ -284,29 +284,8 @@ You can select a base language for the project.
 
 #### Run container
 
-```
-ax c r
-```
-
 ```shell
-NAME:
-   AX container run - Run container
-
-USAGE:
-   AX container run command [command options] 
-
-COMMANDS:
-   buf, b   Run buf container
-   help, h  Shows a list of commands or help for one command
-
-OPTIONS:
-   --help, -h  show help
+ax c r <alias> <args> ...
 ```
 
-##### Run buf container
-
-```shell
-ax c r b <args> ...
-```
-
-Run buf build cli container with arguments.
+Run container image with alias and arguments.
