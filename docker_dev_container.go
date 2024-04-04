@@ -25,6 +25,8 @@ func initDevContainer(ctx *cli.Context) error {
 		writeNodeDevContainer(dockerFileBuilder)
 	case ctx.Bool("python"):
 		writePythonDevContainer(dockerFileBuilder)
+	default:
+		return fmt.Errorf("no language specified")
 	}
 
 	dockerFilePath := filepath.Join(dir, "Dockerfile")
@@ -42,6 +44,22 @@ func initDevContainer(ctx *cli.Context) error {
 	devcontainerFileContent.WriteString("}\n")
 	if err := os.WriteFile(devcontainerFilePath, devcontainerFileContent.Bytes(), 0644); err != nil {
 		return fmt.Errorf("error writing devcontainer.json: %w", err)
+	}
+
+	devComposeFilePath := filepath.Join(dir, "docker-compose.yml")
+	devComposeFileContent := bytes.NewBuffer(nil)
+	devComposeFileContent.WriteString("version: '3'\n")
+	devComposeFileContent.WriteString("services:\n")
+	devComposeFileContent.WriteString("  ")
+	devComposeFileContent.WriteString(name)
+	devComposeFileContent.WriteString(":\n")
+	devComposeFileContent.WriteString("    build:\n")
+	devComposeFileContent.WriteString("      context: .\n")
+	devComposeFileContent.WriteString("      dockerfile: Dockerfile\n")
+	devComposeFileContent.WriteString("    volumes:\n")
+	devComposeFileContent.WriteString("      - .:/workspace:cached\n")
+	if err := os.WriteFile(devComposeFilePath, devComposeFileContent.Bytes(), 0644); err != nil {
+		return fmt.Errorf("error writing docker-compose.yml: %w", err)
 	}
 
 	return nil
