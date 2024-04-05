@@ -1,0 +1,9 @@
+{
+  "name": "snowmerak-ax",
+  "dockerComposeFile": [
+    "docker-compose.yml"
+  ],
+  "service": "snowmerak-ax",
+  "workspaceFolder": "/workspace",
+  "shutdownAction": "stopCompose"
+}
