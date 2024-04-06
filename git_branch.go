@@ -153,3 +153,35 @@ func switchUnstable(ctx *cli.Context) error {
 
 	return nil
 }
+
+// const (
+// 	branchLevelStable   = "stable"
+// 	branchLevelUnstable = "unstable"
+// 	branchLevelFeature  = "feature"
+// 	branchLevelProposal = "proposal"
+// 	branchLevelBugfix   = "bugfix"
+// 	branchLevelHotfix   = "hotfix"
+// 	branchLevelProd     = "prod"
+// 	branchLevelUnknown  = "unknown"
+// )
+
+// func checkBranchLevel(branchName string) string {
+// 	switch {
+// 	case strings.Contains(branchName, branchLevelProposal):
+// 		return branchLevelProposal
+// 	case strings.Contains(branchName, branchLevelFeature):
+// 		return branchLevelFeature
+// 	case strings.Contains(branchName, branchLevelBugfix):
+// 		return branchLevelBugfix
+// 	case strings.Contains(branchName, branchLevelHotfix):
+// 		return branchLevelHotfix
+// 	case strings.Contains(branchName, branchLevelStable):
+// 		return branchLevelStable
+// 	case strings.Contains(branchName, branchLevelUnstable):
+// 		return branchLevelUnstable
+// 	case strings.Contains(branchName, branchLevelProd):
+// 		return branchLevelProd
+// 	}
+
+// 	return branchLevelUnknown
+// }
