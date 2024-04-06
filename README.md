@@ -162,41 +162,20 @@ USAGE:
    AX container command [command options] 
 
 COMMANDS:
-   config, c        Configure container
-   image, i         
-   devcontainer, d  
-   run, r           Run container
-   help, h          Shows a list of commands or help for one command
+   init, n   Initialize container config
+   image, i  
+   dev, d    
+   run, r    Run container
+   help, h   Shows a list of commands or help for one command
 
 OPTIONS:
    --help, -h  show help
 ```
 
-#### Configure container
-
-```
-ax c c
-```
+#### Initialize container config
 
 ```shell
-NAME:
-   AX container config - Configure container
-
-USAGE:
-   AX container config command [command options] 
-
-COMMANDS:
-   init, i  Initialize container config
-   help, h  Shows a list of commands or help for one command
-
-OPTIONS:
-   --help, -h  show help
-```
-
-##### Initialize container config
-
-```shell
-ax c c i
+ax c n
 ```
 
 Initialize container config file for build and deployment.
@@ -253,13 +232,13 @@ ax c d
 
 ```shell
 NAME:
-   AX container devcontainer
+   AX container dev
 
 USAGE:
-   AX container devcontainer command [command options] 
+   AX container dev command [command options] 
 
 COMMANDS:
-   init, i  Initialize devcontainer
+   init, i  Initialize dev
    help, h  Shows a list of commands or help for one command
 
 OPTIONS:

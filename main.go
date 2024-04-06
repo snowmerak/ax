@@ -20,55 +20,55 @@ func main() {
 						Name:      "init",
 						Aliases:   []string{"i"},
 						Usage:     "Initialize a new git repository",
-						UsageText: "ax init <remote-repository>",
+						UsageText: "ax git init <remote-repository>",
 						Action:    initRepo,
 					}, {
 						Name:      "push",
 						Aliases:   []string{"u"},
 						Usage:     "Push and switch back to the previous branch",
-						UsageText: "ax push",
+						UsageText: "ax git push",
 						Action:    push,
 					}, {
 						Name:      "commit",
 						Aliases:   []string{"c"},
 						Usage:     "Commit changes",
-						UsageText: "ax commit <message>",
+						UsageText: "ax git commit <message>",
 						Action:    commit,
 					}, {
 						Name:      "feature",
 						Aliases:   []string{"f"},
 						Usage:     "Create a new feature branch",
-						UsageText: "ax feature <feature-name>",
+						UsageText: "ax git feature <feature-name>",
 						Action:    switchFeature,
 					}, {
 						Name:      "bugfix",
 						Aliases:   []string{"b"},
 						Usage:     "Create a new bugfix branch",
-						UsageText: "ax bugfix <bugfix-name>",
+						UsageText: "ax git bugfix <bugfix-name>",
 						Action:    switchBugfix,
 					}, {
 						Name:      "hotfix",
 						Aliases:   []string{"x"},
 						Usage:     "Create a new hotfix branch",
-						UsageText: "ax hotfix <hotfix-name>",
+						UsageText: "ax git hotfix <hotfix-name>",
 						Action:    switchHotfix,
 					}, {
 						Name:      "proposal",
 						Aliases:   []string{"p"},
 						Usage:     "Create a new proposal branch",
-						UsageText: "ax proposal <proposal-name>",
+						UsageText: "ax git proposal <proposal-name>",
 						Action:    switchProposal,
 					}, {
 						Name:      "develop",
 						Aliases:   []string{"d"},
 						Usage:     "Switch to the develop branch",
-						UsageText: "ax develop",
+						UsageText: "ax git develop",
 						Action:    switchDevelop,
 					}, {
 						Name:      "staging",
 						Aliases:   []string{"s"},
 						Usage:     "Switch to the staging branch",
-						UsageText: "ax staging",
+						UsageText: "ax git staging",
 						Action:    switchStaging,
 					},
 				},
@@ -78,18 +78,11 @@ func main() {
 				Aliases: []string{"c"},
 				Subcommands: []*cli.Command{
 					{
-						Name:    "config",
-						Aliases: []string{"c"},
-						Usage:   "Configure container",
-						Subcommands: []*cli.Command{
-							{
-								Name:      "init",
-								Aliases:   []string{"i"},
-								Usage:     "Initialize container config",
-								UsageText: "ax container config init",
-								Action:    initContainerConfig,
-							},
-						},
+						Name:      "init",
+						Aliases:   []string{"n"},
+						Usage:     "Initialize container config",
+						UsageText: "ax container init",
+						Action:    initContainerConfig,
 					},
 					{
 						Name:    "image",
@@ -149,14 +142,14 @@ func main() {
 						},
 					},
 					{
-						Name:    "devcontainer",
+						Name:    "dev",
 						Aliases: []string{"d"},
 						Subcommands: []*cli.Command{
 							{
 								Name:      "init",
 								Aliases:   []string{"i"},
 								Usage:     "Initialize devcontainer",
-								UsageText: "ax container devcontainer init <language-option> <name>",
+								UsageText: "ax container dev init <language-option> <name>",
 								Action:    initDevContainer,
 								Flags: []cli.Flag{
 									&cli.BoolFlag{
