@@ -216,7 +216,7 @@ func main() {
 					{
 						Name:      "run",
 						Aliases:   []string{"r"},
-						Usage:     "Run container",
+						Usage:     "Run container image",
 						UsageText: "ax container run <alias> <args>",
 						Action:    dockerRun,
 					},
