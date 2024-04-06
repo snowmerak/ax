@@ -62,7 +62,8 @@ func initContainerConfig(ctx *cli.Context) error {
 	}
 
 	cc.Aliases = map[string]string{
-		"buf": "bufbuild/buf",
+		"buf":  "bufbuild/buf",
+		"sqlc": "sqlc/sqlc",
 	}
 
 	if err := saveContainerConfig(&cc); err != nil {
