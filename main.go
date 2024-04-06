@@ -24,7 +24,7 @@ func main() {
 						Action:    initRepo,
 					}, {
 						Name:      "push",
-						Aliases:   []string{"u"},
+						Aliases:   []string{"p"},
 						Usage:     "Push and switch back to the previous branch",
 						UsageText: "ax git push",
 						Action:    push,
@@ -54,13 +54,13 @@ func main() {
 						Action:    switchHotfix,
 					}, {
 						Name:      "proposal",
-						Aliases:   []string{"p"},
+						Aliases:   []string{"z"},
 						Usage:     "Create a new proposal branch",
 						UsageText: "ax git proposal <proposal-name>",
 						Action:    switchProposal,
 					}, {
 						Name:      "unstable",
-						Aliases:   []string{"d"},
+						Aliases:   []string{"u"},
 						Usage:     "Switch to the unstable branch",
 						UsageText: "ax git unstable",
 						Action:    switchUnstable,
