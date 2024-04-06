@@ -42,19 +42,19 @@ func initRepo(ctx *cli.Context) error {
 		return fmt.Errorf("error pushing to remote repository: %w", err)
 	}
 
-	if err := run("git", "switch", "-C", "staging"); err != nil {
-		return fmt.Errorf("error creating develop branch: %w", err)
+	if err := run("git", "switch", "-C", "stable"); err != nil {
+		return fmt.Errorf("error creating stable branch: %w", err)
 	}
 
-	if err := run("git", "push", "-u", "origin", "staging"); err != nil {
+	if err := run("git", "push", "-u", "origin", "stable"); err != nil {
 		return fmt.Errorf("error pushing to remote repository: %w", err)
 	}
 
-	if err := run("git", "switch", "-C", "develop"); err != nil {
-		return fmt.Errorf("error creating develop branch: %w", err)
+	if err := run("git", "switch", "-C", "unstable"); err != nil {
+		return fmt.Errorf("error creating unstable branch: %w", err)
 	}
 
-	if err := run("git", "push", "-u", "origin", "develop"); err != nil {
+	if err := run("git", "push", "-u", "origin", "unstable"); err != nil {
 		return fmt.Errorf("error pushing to remote repository: %w", err)
 	}
 

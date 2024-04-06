@@ -16,8 +16,8 @@ func switchFeature(ctx *cli.Context) error {
 
 	featureName = fmt.Sprintf("feature/%s", featureName)
 
-	if err := run("git", "switch", "develop"); err != nil {
-		return fmt.Errorf("failed to switch to develop branch: %w", err)
+	if err := run("git", "switch", "unstable"); err != nil {
+		return fmt.Errorf("failed to switch to unstable branch: %w", err)
 	}
 
 	if err := run("git", "pull"); err != nil {
@@ -73,8 +73,8 @@ func switchBugfix(ctx *cli.Context) error {
 
 	bugfixName = fmt.Sprintf("bugfix/%s", bugfixName)
 
-	if err := run("git", "switch", "develop"); err != nil {
-		return fmt.Errorf("failed to switch to develop branch: %w", err)
+	if err := run("git", "switch", "unstable"); err != nil {
+		return fmt.Errorf("failed to switch to unstable branch: %w", err)
 	}
 
 	if err := run("git", "pull"); err != nil {
@@ -120,7 +120,7 @@ func switchHotfix(ctx *cli.Context) error {
 	return nil
 }
 
-func switchStaging(ctx *cli.Context) error {
+func switchStable(ctx *cli.Context) error {
 	name, err := getBranchName()
 	if err != nil {
 		return fmt.Errorf("failed to get current branch: %w", err)
@@ -130,25 +130,25 @@ func switchStaging(ctx *cli.Context) error {
 		return fmt.Errorf("you must be on the prod branch")
 	}
 
-	if err := run("git", "switch", "staging"); err != nil {
-		return fmt.Errorf("failed to switch to staging branch: %w", err)
+	if err := run("git", "switch", "stable"); err != nil {
+		return fmt.Errorf("failed to switch to stable branch: %w", err)
 	}
 
 	return nil
 }
 
-func switchDevelop(ctx *cli.Context) error {
+func switchUnstable(ctx *cli.Context) error {
 	name, err := getBranchName()
 	if err != nil {
 		return fmt.Errorf("failed to get current branch: %w", err)
 	}
 
-	if name != "staging" {
-		return fmt.Errorf("you must be on the staging branch")
+	if name != "stable" {
+		return fmt.Errorf("you must be on the stable branch")
 	}
 
-	if err := run("git", "switch", "develop"); err != nil {
-		return fmt.Errorf("failed to switch to develop branch: %w", err)
+	if err := run("git", "switch", "unstable"); err != nil {
+		return fmt.Errorf("failed to switch to unstable branch: %w", err)
 	}
 
 	return nil

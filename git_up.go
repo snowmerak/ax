@@ -29,20 +29,20 @@ func push(ctx *cli.Context) error {
 			return fmt.Errorf("failed to push changes: %w", err)
 		}
 
-		if err := run("git", "switch", "develop"); err != nil {
-			return fmt.Errorf("failed to switch to develop branch: %w", err)
+		if err := run("git", "switch", "unstable"); err != nil {
+			return fmt.Errorf("failed to switch to unstable branch: %w", err)
 		}
 	case 1:
 		switch sp[0] {
-		case "develop":
+		case "unstable":
 			if err := gitPush(); err != nil {
 				return fmt.Errorf("failed to push changes: %w", err)
 			}
 
-			if err := run("git", "switch", "staging"); err != nil {
-				return fmt.Errorf("failed to switch to staging branch: %w", err)
+			if err := run("git", "switch", "stable"); err != nil {
+				return fmt.Errorf("failed to switch to stable branch: %w", err)
 			}
-		case "staging":
+		case "stable":
 			if err := gitPush(); err != nil {
 				return fmt.Errorf("failed to push changes: %w", err)
 			}

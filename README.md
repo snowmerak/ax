@@ -45,8 +45,8 @@ COMMANDS:
    bugfix, b    Create a new bugfix branch
    hotfix, x    Create a new hotfix branch
    proposal, p  Create a new proposal branch
-   develop, d   Switch to the develop branch
-   staging, s   Switch to the staging branch
+   unstable, d   Switch to the unstable branch
+   stable, s   Switch to the stable branch
    help, h      Shows a list of commands or help for one command
 
 OPTIONS:
@@ -62,28 +62,28 @@ ax g init <remote-git-url>
 Initialize a new git repository and create some branches
 
 1. prod: The production branch, operates on the real server
-2. staging: The staging branch, stable version for testing
-3. develop: The development branch, the main branch for development
+2. stable: The stable branch, stable version for testing
+3. unstable: The development branch, the main branch for development
 
-#### Switch to the staging branch
-
-```bash
-ax g staging
-```
-
-The staging branch is the stable version for testing.  
-You can switch to the staging branch only if you are in the develop branch.  
-If you want to release a new version, you should switch to the staging branch first.
-
-#### Switch to the develop branch
+#### Switch to the stable branch
 
 ```bash
-ax g develop
+ax g stable
 ```
 
-The develop branch is the main branch for development.  
-You can switch to the develop branch only if you are in the staging branch.
-If you want to create a new feature, bugfix branch, you should switch to the develop branch first.  
+The stable branch is the stable version for testing.  
+You can switch to the stable branch only if you are in the unstable branch.  
+If you want to release a new version, you should switch to the stable branch first.
+
+#### Switch to the unstable branch
+
+```bash
+ax g unstable
+```
+
+The unstable branch is the main branch for development.  
+You can switch to the unstable branch only if you are in the stable branch.
+If you want to create a new feature, bugfix branch, you should switch to the unstable branch first.  
 
 #### Switch feature branch
 
@@ -91,9 +91,9 @@ If you want to create a new feature, bugfix branch, you should switch to the dev
 ax g feature <branch-name>
 ```
 
-The feature branch is used to develop a new feature.  
-You can switch to the feature branch only if you are in the develop branch.  
-If you want to create a new feature branch, you should switch to the develop branch first.
+The feature branch is used to unstable a new feature.  
+You can switch to the feature branch only if you are in the unstable branch.  
+If you want to create a new feature branch, you should switch to the unstable branch first.
 
 #### Switch bugfix branch
 
@@ -102,9 +102,9 @@ ax g bugfix <branch-name>
 ```
 
 The bugfix branch is used to fix a bug.  
-You can switch to the bugfix branch only if you are in the develop branch.  
-If you want to create a new bugfix branch, you should switch to the develop branch first.  
-**CAUTION: The bugfix branch should be merged into the develop branch before the next release.**
+You can switch to the bugfix branch only if you are in the unstable branch.  
+If you want to create a new bugfix branch, you should switch to the unstable branch first.  
+**CAUTION: The bugfix branch should be merged into the unstable branch before the next release.**
 
 #### Switch hotfix branch
 
@@ -113,7 +113,7 @@ ax g hotfix <branch-name>
 ```
 
 The hotfix branch is used to fix a bug on the production server.  
-**CAUTION: The hotfix branch must be deleted. Do not merge the hotfix branch into the develop branch.**
+**CAUTION: The hotfix branch must be deleted. Do not merge the hotfix branch into the unstable branch.**
 
 #### Switch proposal branch
 
@@ -122,8 +122,8 @@ ax g proposal <branch-name>
 ```
 
 The proposal branch is used to propose a new function or a new idea.  
-You can switch to the proposal branch only if you are in the develop branch.  
-If you want to create a new proposal branch, you should switch to the develop branch first.
+You can switch to the proposal branch only if you are in the unstable branch.  
+If you want to create a new proposal branch, you should switch to the unstable branch first.
 
 #### Commit changes
 
@@ -141,12 +141,12 @@ ax g push
 
 Push changes and switch back to the previous branch.  
 The previous branch is the branch you were in before switching to the current branch.
-- If you are in the feature branch, the previous branch is the develop branch.
-- If you are in the bugfix branch, the previous branch is the develop branch.
+- If you are in the feature branch, the previous branch is the unstable branch.
+- If you are in the bugfix branch, the previous branch is the unstable branch.
 - If you are in the hotfix branch, the previous branch is the prod branch.
 - If you are in the proposal branch, the previous branch is the feature or bugfix branch.
-- If you are in the develop branch, the previous branch is the staging branch.
-- If you are in the staging branch, the previous branch is the prod branch.
+- If you are in the unstable branch, the previous branch is the stable branch.
+- If you are in the stable branch, the previous branch is the prod branch.
 
 ### container
 
