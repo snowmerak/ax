@@ -166,11 +166,11 @@ func validateContainerTag(tag string) error {
 	}
 
 	switch tag {
-	case "dev", "staging":
+	case "latest":
 		return nil
 	}
 
-	regex, err := regexp2.Compile(`^\d+\.\d+\.\d+$`, regexp2.DefaultUnmarshalOptions)
+	regex, err := regexp2.Compile(`^\d+\.\d+\.\d+(-(unstable|stable|dev|beta))?$`, regexp2.DefaultUnmarshalOptions)
 	if err != nil {
 		return fmt.Errorf("error compiling regex: %w", err)
 	}
@@ -186,11 +186,11 @@ func validateContainerTag(tag string) error {
 
 func incrementTag(tag string, majorVariance int, minorVariance int, patchVariance int) (string, error) {
 	switch tag {
-	case "dev", "staging":
+	case "latest":
 		return tag, nil
 	}
 
-	regex, err := regexp2.Compile(`^(\d+)\.(\d+)\.(\d+)$`, regexp2.DefaultUnmarshalOptions)
+	regex, err := regexp2.Compile(`^\d+\.\d+\.\d+(-(unstable|stable|dev|beta))?$`, regexp2.DefaultUnmarshalOptions)
 	if err != nil {
 		return "", fmt.Errorf("error compiling regex: %w", err)
 	}
