@@ -133,9 +133,24 @@ func main() {
 								Action:    buildDockerImage,
 								Flags: []cli.Flag{
 									&cli.BoolFlag{
-										Name:    "push",
+										Name: "push",
+										// Aliases: []string{"p"},
+										Usage: "Push the image to the registry",
+									},
+									&cli.BoolFlag{
+										Name:    "major",
+										Aliases: []string{"M"},
+										Usage:   "Increment the major version",
+									},
+									&cli.BoolFlag{
+										Name:    "minor",
+										Aliases: []string{"m"},
+										Usage:   "Increment the minor version",
+									},
+									&cli.BoolFlag{
+										Name:    "patch",
 										Aliases: []string{"p"},
-										Usage:   "Push the image to the registry",
+										Usage:   "Increment the patch version",
 									},
 								},
 							},
