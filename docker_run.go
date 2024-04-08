@@ -2,6 +2,7 @@ package main
 
 import (
 	"errors"
+
 	"github.com/urfave/cli/v2"
 )
 
@@ -17,7 +18,7 @@ func dockerRun(ctx *cli.Context) error {
 		return err
 	}
 
-	if err := run(cfg.Engine, append([]string{"run", "-v", ".:/workspace", "-w", "/workspace", cfg.Aliases[args[0]]}, args[1:]...)...); err != nil {
+	if err := run(cfg.Engine, append([]string{"run", "--rm", "-v", ".:/workspace", "-w", "/workspace", cfg.Aliases[args[0]]}, args[1:]...)...); err != nil {
 		return err
 	}
 
